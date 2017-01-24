@@ -31,7 +31,7 @@ public class GroupCreationTests {
     }
 
     @Test
-    public void GroupCreationTests() {
+    public void testGroupCreation() {
         gotoGroupPage();
         initGroupCreation();
         fillGroupForm(new GroupData("test01", "testLogo 01", "Test Comment 01"));
