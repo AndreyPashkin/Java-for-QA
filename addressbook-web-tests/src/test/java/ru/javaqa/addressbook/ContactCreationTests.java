@@ -31,7 +31,7 @@ public class ContactCreationTests {
     }
 
     @Test
-    public void ContactCreationTests() {
+    public void testContactCreation() {
 
         gotoAddContactPage();
         fillContactForm(new ContactData("Andrey", "Ivanovich", "Ivanov", "aii", "Developer", "Nice Company", "Russia, SPb, Nevskiy, 1", "1234567", "2345678", "3456789", "aii@mail.ok"));
