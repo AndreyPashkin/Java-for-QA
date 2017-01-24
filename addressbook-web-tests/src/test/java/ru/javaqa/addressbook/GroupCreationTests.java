@@ -21,11 +21,11 @@ public class GroupCreationTests {
     public void setUp() throws Exception {
         wd = new FirefoxDriver();
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    }
-    
-    @Test
-    public void GroupCreationTests() {
         wd.get("http://addressbook.local/index.php");
+        login();
+    }
+
+    private void login() {
         wd.findElement(By.name("user")).click();
         wd.findElement(By.name("user")).clear();
         wd.findElement(By.name("user")).sendKeys("admin");
@@ -33,8 +33,26 @@ public class GroupCreationTests {
         wd.findElement(By.name("pass")).clear();
         wd.findElement(By.name("pass")).sendKeys("secret");
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-        wd.findElement(By.cssSelector(".admin > a:nth-child(1)")).click();
-        wd.findElement(By.name("new")).click();
+    }
+
+    @Test
+    public void GroupCreationTests() {
+        gotoGroupPage();
+        initGroupCreation();
+        fillGroupForm();
+        submitGroupCreation();
+        returnToGroupPage();
+    }
+
+    private void returnToGroupPage() {
+        wd.findElement(By.linkText("group page")).click();
+    }
+
+    private void submitGroupCreation() {
+        wd.findElement(By.name("submit")).click();
+    }
+
+    private void fillGroupForm() {
         wd.findElement(By.name("group_name")).click();
         wd.findElement(By.name("group_name")).clear();
         wd.findElement(By.name("group_name")).sendKeys("test01");
@@ -44,10 +62,16 @@ public class GroupCreationTests {
         wd.findElement(By.name("group_footer")).click();
         wd.findElement(By.name("group_footer")).clear();
         wd.findElement(By.name("group_footer")).sendKeys("Test Comment 01");
-        wd.findElement(By.name("submit")).click();
-        wd.findElement(By.linkText("group page")).click();
     }
-    
+
+    private void initGroupCreation() {
+        wd.findElement(By.name("new")).click();
+    }
+
+    private void gotoGroupPage() {
+        wd.findElement(By.cssSelector(".admin > a:nth-child(1)")).click();
+    }
+
     @AfterMethod
     public void tearDown() {
         wd.quit();
