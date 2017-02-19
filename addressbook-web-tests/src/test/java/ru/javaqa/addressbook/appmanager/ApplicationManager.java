@@ -10,9 +10,7 @@ import org.openqa.selenium.remote.BrowserType;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Андрей on 06.02.2017.
- */
+
 public class ApplicationManager {
     WebDriver wd;
 
@@ -27,15 +25,15 @@ public class ApplicationManager {
     }
 
     public void init() {
-        if (Objects.equals(browser, BrowserType.FIREFOX)){
+        if (Objects.equals(browser, BrowserType.FIREFOX)) {
             wd = new FirefoxDriver();
-        }else if (Objects.equals(browser, BrowserType.CHROME)){
+        } else if (Objects.equals(browser, BrowserType.CHROME)) {
             wd = new ChromeDriver();
-        }else if (Objects.equals(browser, BrowserType.IE)){
+        } else if (Objects.equals(browser, BrowserType.IE)) {
             wd = new InternetExplorerDriver();
         }
 
-        wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         wd.get("http://addressbook.local/index.php");
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);

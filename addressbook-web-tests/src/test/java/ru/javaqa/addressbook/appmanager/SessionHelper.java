@@ -2,11 +2,8 @@ package ru.javaqa.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
-/**
- * Created by Андрей on 06.02.2017.
- */
+
 public class SessionHelper extends BaseHelper {
 
     public SessionHelper(WebDriver wd) {

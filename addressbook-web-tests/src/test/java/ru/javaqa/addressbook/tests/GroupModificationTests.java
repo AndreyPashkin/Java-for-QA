@@ -3,13 +3,11 @@ package ru.javaqa.addressbook.tests;
 import org.testng.annotations.Test;
 import ru.javaqa.addressbook.model.GroupData;
 
-/**
- * Created by Андрей on 12.02.2017.
- */
-public class GroupModificationTests extends TestBase{
+
+public class GroupModificationTests extends TestBase {
 
     @Test
-    public void testGroupModification(){
+    public void testGroupModification() {
         app.getNavigationHelper().gotoGroupPage();
         app.getGroupHelper().selectGroup();
         app.getGroupHelper().initGroupModification();

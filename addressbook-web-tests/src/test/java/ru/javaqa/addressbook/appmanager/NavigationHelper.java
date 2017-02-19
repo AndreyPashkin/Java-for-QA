@@ -2,11 +2,7 @@ package ru.javaqa.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
-/**
- * Created by Андрей on 06.02.2017.
- */
 public class NavigationHelper extends BaseHelper {
 
     public NavigationHelper(WebDriver wd) {
@@ -14,11 +10,20 @@ public class NavigationHelper extends BaseHelper {
     }
 
     public void gotoHomePage() {
-        click(By.cssSelector("#nav ul li > a"));
+        if (isElementPresent(By.id("maintable"))) {
+            return;
+        }
+        click(By.linkText("home"));
     }
 
     public void gotoGroupPage() {
-        click(By.cssSelector(".admin > a:nth-child(1)"));
+        if (isElementPresent(By.tagName("h1"))
+                && wd.findElement(By.tagName("h1")).getText().equals("Group")
+                && isElementPresent(By.name("new"))
+                ) {
+            return;
+        }
+        click(By.linkText("groups"));
     }
 
 }
