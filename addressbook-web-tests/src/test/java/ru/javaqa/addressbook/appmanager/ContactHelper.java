@@ -38,6 +38,7 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void createContact(ContactData contact) {
+        click(By.linkText("add new"));
         fillContactForm(contact, true);
         submitContactCreation();
     }
