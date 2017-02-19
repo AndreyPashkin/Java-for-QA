@@ -11,7 +11,7 @@ public class GroupHelper extends BaseHelper {
     }
 
     public void returnToGroupPage() {
-        click(By.linkText("group page"));
+        click(By.linkText("groups"));
     }
 
     public void submitGroupCreation() {
@@ -49,6 +49,13 @@ public class GroupHelper extends BaseHelper {
         fillGroupForm(group);
         submitGroupCreation();
         returnToGroupPage();
+    }
+
+    public void groupPreparation() {
+        returnToGroupPage();
+        if (!isThereAGroup()) {
+            createGroup(new GroupData("test01", null, null));
+        }
     }
 
     public boolean isThereAGroup() {

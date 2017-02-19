@@ -37,9 +37,17 @@ public class ContactHelper extends BaseHelper {
 
     }
 
-    public void createContact(ContactData contact){
-        fillContactForm(contact,true);
+    public void createContact(ContactData contact) {
+        fillContactForm(contact, true);
         submitContactCreation();
+    }
+
+    public void contactPreparation() {
+        click(By.linkText("home"));
+        if (!isThereAContact()) {
+            click(By.linkText("add new"));
+            createContact(new ContactData("Andrey", "Ivanovich", "Ivanov", "aii", "Developer", "Nice Company", "Russia, SPb, Nevskiy, 1", "1234567", "2345678", "3456789", "aii@mail.ok", "test01"));
+        }
     }
 
     public void selectContact() {
